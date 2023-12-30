@@ -1,5 +1,5 @@
 import Box from '@mui/system/Box'
-import theme from '../../../theme'
+import theme from '~/theme'
 
 function BoadContent() {
   return (
