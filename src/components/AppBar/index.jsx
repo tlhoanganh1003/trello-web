@@ -1,16 +1,58 @@
 import Box from '@mui/system/Box'
 import ModeSelect from '~/components/ModeSelect'
+import AppsIcon from '@mui/icons-material/Apps'
+import { ReactComponent as trelloLogo } from '~/assets/trello.svg'
+import SvgIcon from '@mui/material/SvgIcon'
+import { Typography } from '@mui/material'
+import Workspaces from './Menus/Workspaces'
+import Recent from './Menus/Recent'
+import Starred from './Menus/Starred'
+import Templates from './Menus/Templates'
+import Profiles from './Menus/Profiles'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
+import Badge from '@mui/material/Badge'
+import Tooltip from '@mui/material/Tooltip'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+
 
 function AppBar() {
   return (
-    <Box sx={{
-      backgroundColor: 'primary.light',
+    <Box px={2} sx={{
+      backgroundColor: 'white',
       width:'100%',
       height: (theme) => theme.trello.appBarHeight,
       display: 'flex',
-      alignItems: 'center'
+      alignItems: 'center',
+      justifyContent: 'space-between'
     }}>
-      <ModeSelect />
+      <Box sx={{ display:'flex', alignItems:'center', gap: 2 }}>
+        <AppsIcon sx={{color: 'primary.main'}}/>
+        <Box sx={{ display:'flex', alignItems:'center', gap: 0.5 }}>
+          <SvgIcon component={trelloLogo} inheritViewBox sx={{ color: 'primary.main' }} />
+          <Typography variant='span' sx={{fontSize: '1.2rem', fontWeight:'bold', color: 'primary.main' }}>
+            Trello</Typography>
+        </Box>
+        <Workspaces />
+        <Recent />
+        <Starred />
+        <Templates />
+        <Button variant="outlined">Create</Button>
+      </Box>
+      {/* left */}
+      <Box sx={{ display:'flex', alignItems:'center', gap: 2 }}>
+        <TextField id="outlined-search" label="Search..." type="search" size='small'/>
+        <ModeSelect />
+
+        <Tooltip title="Notification">
+          <Badge color="secondary" variant='dot'sx={{ cursor: 'pointer'}}>
+            <NotificationsNoneIcon sx={{ cursor: 'pointer'}}/>
+            <HelpOutlineIcon />
+          </Badge>
+        </Tooltip>
+        <Profiles />
+      </Box>
     </Box>
   )
 }
