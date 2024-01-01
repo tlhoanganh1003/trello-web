@@ -32,7 +32,7 @@ function Profiles() {
           aria-expanded={open ? 'true' : undefined}
         >
           <Avatar
-            sx={{ width: 32, height: 32 }}
+            sx={{ width: 38, height: 38 }}
             alt="iue"
             src='https://www.facebook.com/photo/?fbid=849371812755249&set=a.103272610698510'
           />
