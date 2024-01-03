@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 import NoteAddIcon from '@mui/icons-material/NoteAdd'
 
 
-function ListColumns() {
+function ListColumns({columns}) {
   return (
     <Box sx={{
       bgcolor: 'inherit',
@@ -15,14 +15,13 @@ function ListColumns() {
       overflowY: 'hidden',
       '&::-webkit-scrollbar-track': { m: 2 }
     }}>
-      <Column />
-      <Column />
-      <Column />
+      {columns?.map(column => <Column key={column._id} column={column}/>
+      )}
       {/* Box Add New Cloumn CTA*/}
       <Box sx={{
         minWidth: '200px',
         maxWidth: '200px',
-        mx:2,
+        mx: 2,
         borderRadius: '6px',
         height: 'fit-content',
         bgcolor: '#ffffff3d'
@@ -31,7 +30,7 @@ function ListColumns() {
           startIcon={<NoteAddIcon />}
           sx={{
             color: 'white',
-            width:'100%',
+            width: '100%',
             justifyContent: 'flex-start',
             pl: 2.5,
             py: 1

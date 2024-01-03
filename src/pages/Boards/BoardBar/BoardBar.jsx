@@ -7,9 +7,10 @@ import BoltIcon from '@mui/icons-material/Bolt'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import Avatar from '@mui/material/Avatar'
 import AvatarGroup from '@mui/material/AvatarGroup'
-import Tooltip from '@mui/material/Tooltip'
+import { Tooltip } from '@mui/material'
 import Button from '@mui/material/Button'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
+import { capitalizeFirstLetter } from '~/utils/formaster'
 
 const MENU_STYLES = {
   color: 'white',
@@ -26,11 +27,11 @@ const MENU_STYLES = {
 
 }
 
-function BoardBar() {
+function BoardBar({board}) {
   return (
     <Box sx={{
       backgroundColor: 'white',
-      width:'100%',
+      width: '100%',
       height: (theme) => theme.trello.boardBarHeight,
       display: 'flex',
       alignItems: 'center',
@@ -40,16 +41,17 @@ function BoardBar() {
       overflowX: 'auto',
       bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2')
     }}>
-      <Box sx={{ display:'flex', alignItems:'center', gap: 2 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <Chip
           sx={MENU_STYLES}
-          icon={<DashboardIcon />} label="HoangAnh Board"
+          icon={<DashboardIcon />}
+          label={board?.title}
           clickable
         />
         <Chip
           sx={MENU_STYLES}
           icon={<VpnLockIcon />}
-          label="Public/Private Workspace"
+          label={capitalizeFirstLetter(board?.type)}
           clickable
         />
         <Chip
@@ -71,12 +73,12 @@ function BoardBar() {
           clickable
         />
       </Box>
-      <Box sx={{ display:'flex', alignItems:'center', gap: 2 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <Button
           variant="outlined"
-          startIcon={<PersonAddIcon/>}
+          startIcon={<PersonAddIcon />}
           sx={{
-            color:'white',
+            color: 'white',
             borderColor: 'white',
             '&:hover': { borderColor: 'white' }
           }}
@@ -93,7 +95,7 @@ function BoardBar() {
               border: 'none',
               color: 'white',
               cursor: 'pointer',
-              '&:first-of-type': { bgcolor: '#a4b0be'}
+              '&:first-of-type': { bgcolor: '#a4b0be' }
             }
           }}
         >
