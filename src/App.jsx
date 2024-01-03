@@ -1,4 +1,4 @@
-import Board from '~/pages/Boards/Board'
+import Board from '~/pages/Boards/_id'
 
 function App() {
 
